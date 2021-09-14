@@ -35,7 +35,7 @@ pipeline {
             """)
          }
       }
-      stage('Run Trivy) {
+      stage('Run Trivy') {
          steps {
             sh(script: """
                trivy dylanmehmedovic/jenkins-course
