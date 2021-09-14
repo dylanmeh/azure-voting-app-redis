@@ -45,6 +45,7 @@ pipeline {
       stage('Stop test app') {
          steps {
             sh(script: """
+               docker-compose up -d
                docker-compose down
             """)
          }
