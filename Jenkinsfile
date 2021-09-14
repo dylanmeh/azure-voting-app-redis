@@ -23,7 +23,9 @@ pipeline {
          steps {
             sh(script: """
                docker-compose up -d
-               pytest ./tests/test_sample.py
+               pip3 --install --upgrade pip
+               pip3 install numpy pytest
+               python -m pytest ./tests/test_sample.py
             """)
          }
       }
