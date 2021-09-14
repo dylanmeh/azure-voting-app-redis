@@ -35,18 +35,12 @@ pipeline {
             """)
          }
       }
-      stage('Push Container') {
+      stage('Run Trivy) {
          steps {
-            echo "Workspace is $WORKSPACE"
-            dir("$WORKSPACE/azure-vote") {
-               script {
-                  docker.withRegistry('https://index.docker.io/v1', 'DockerHub') {
-                     def image = docker.build('dylanmehmedovic/jenkins-course:latest')
-                     image.push()
-                  }
-               }
-            }
+            sh(script: """
+               trivy dylanmehmedovic/jenkins-course
+            """)
          }
       }
    }
-}
+} 
