@@ -38,6 +38,7 @@ pipeline {
       stage('Run Tests') {
          steps {
             sh(script: """
+               docker-compose up -d
                pytest ./tests/test_sample.py
             """)
          }
@@ -45,7 +46,6 @@ pipeline {
       stage('Stop test app') {
          steps {
             sh(script: """
-               docker-compose up -d
                docker-compose down
             """)
          }
